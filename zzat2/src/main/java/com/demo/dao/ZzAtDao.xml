@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.ZzAtDao">
+    <resultMap type="com.demo.entity.ZzAt" id="ZzAtMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="groupid" column="groupid" jdbcType="VARCHAR"/>
+        <result property="receiverid" column="receiverid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--查询单个-->
+    <select id="queryById" resultMap="ZzAtMap">
+        select
+          id, groupid, receiverid
+        from workhub.zz_at
+        where id = '001'
+    </select>
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ZzAtMap">
+        select
+          id, groupid, receiverid
+        from workhub.zz_at
+        limit #{offset}, #{limit}
+    </select>
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ZzAtMap">
+        select
+          id, groupid, receiverid
+        from workhub.zz_at
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="groupid != null and groupid != ''">
+                and groupid = #{groupid}
+            </if>
+            <if test="receiverid != null and receiverid != ''">
+                and receiverid = #{receiverid}
+            </if>
+        </where>
+    </select>
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into workhub.zz_at(groupid, receiverid)
+        values (#{groupid}, #{receiverid})
+    </insert>
+    <!--通过主键修改数据-->
+    <update id="update">
+        update workhub.zz_at
+        <set>
+            <if test="groupid != null and groupid != ''">
+                groupid = #{groupid},
+            </if>
+            <if test="receiverid != null and receiverid != ''">
+                receiverid = #{receiverid},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from workhub.zz_at where id = #{id}
+    </delete>
+</mapper>
