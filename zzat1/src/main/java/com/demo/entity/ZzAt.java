@@ -17,6 +17,11 @@ public class ZzAt implements Serializable {
     //被@人ID
     private String receiverid;
 
+    public ZzAt(String id, String groupid, String receiverid) {
+        this.id = id;
+        this.groupid = groupid;
+        this.receiverid = receiverid;
+    }
 
     public String getId() {
         return id;

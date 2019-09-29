@@ -3,8 +3,6 @@ package com.demo.dao;
 import com.demo.entity.ZzAt;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,8 +12,9 @@ import java.util.List;
  * @author makejava
  * @since 2019-09-25 15:07:29
  */
+//@Repository
 @Mapper
-public interface ZzAtDao {
+public interface ZzAtDao{
 
     /**
      * 通过ID查询单条数据
@@ -32,7 +31,7 @@ public interface ZzAtDao {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<ZzAt> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    //List<ZzAt> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
@@ -41,7 +40,7 @@ public interface ZzAtDao {
      * @param zzAt 实例对象
      * @return 对象列表
      */
-    List<ZzAt> queryAll(ZzAt zzAt);
+    //List<ZzAt> queryAll(ZzAt zzAt);
 
     /**
      * 新增数据
@@ -67,4 +66,5 @@ public interface ZzAtDao {
      */
     int deleteById(String id);
 
+     List<ZzAt> queryAll();
 }

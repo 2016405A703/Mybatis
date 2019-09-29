@@ -14,7 +14,7 @@ import java.util.List;
  * @author makejava
  * @since 2019-09-25 15:07:31
  */
-@Service("zzAtService")
+@Service
 public class ZzAtServiceImpl implements ZzAtService {
     @Resource
     private ZzAtDao zzAtDao;
@@ -27,7 +27,8 @@ public class ZzAtServiceImpl implements ZzAtService {
      */
     @Override
     public ZzAt queryById(String id) {
-        return this.zzAtDao.queryById(id);
+        ZzAt res = zzAtDao.queryById(id);
+        return res;
     }
 
     /**
@@ -37,10 +38,11 @@ public class ZzAtServiceImpl implements ZzAtService {
      * @param limit 查询条数
      * @return 对象列表
      */
-    @Override
+    /*@Override
     public List<ZzAt> queryAllByLimit(int offset, int limit) {
         return this.zzAtDao.queryAllByLimit(offset, limit);
     }
+
 
     /**
      * 新增数据
@@ -60,7 +62,7 @@ public class ZzAtServiceImpl implements ZzAtService {
      * @param zzAt 实例对象
      * @return 实例对象
      */
-    @Override
+   @Override
     public ZzAt update(ZzAt zzAt) {
         this.zzAtDao.update(zzAt);
         return this.queryById(zzAt.getId());
@@ -73,7 +75,13 @@ public class ZzAtServiceImpl implements ZzAtService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(String id) {
-        return this.zzAtDao.deleteById(id) > 0;
+    public int deleteById(String id) {
+        return zzAtDao.deleteById(id) ;
+    }
+
+    /*查询所有*/
+   @Override
+    public List<ZzAt> findAll(){
+        return zzAtDao.queryAll();
     }
 }

@@ -27,7 +27,7 @@ public interface ZzAtService {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<ZzAt> queryAllByLimit(int offset, int limit);
+   /* List<ZzAt> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
@@ -43,7 +43,7 @@ public interface ZzAtService {
      * @param zzAt 实例对象
      * @return 实例对象
      */
-    ZzAt update(ZzAt zzAt);
+   ZzAt update(ZzAt zzAt);
 
     /**
      * 通过主键删除数据
@@ -51,6 +51,8 @@ public interface ZzAtService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(String id);
+    int deleteById(String id);
 
+    /*查询所有*/
+   List<ZzAt> findAll();
 }
